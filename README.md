@@ -4,6 +4,7 @@
 
 # Handrail
 
+[![Checks](https://github.com/ufodia/handrail/actions/workflows/checks.yml/badge.svg)](https://github.com/ufodia/handrail/actions/workflows/checks.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-233d52.svg)](LICENSE)
 [![Local guides](https://img.shields.io/badge/Guides-local%20storage-233d52.svg)](docs/privacy.md)
 
@@ -16,6 +17,8 @@
 </p>
 
 ![Actual Handrail extension guiding a practice task on the page](docs/assets/workspace.png)
+
+[Public project site](https://handrail-neon.vercel.app/)
 
 ## Help that stays next to the task
 

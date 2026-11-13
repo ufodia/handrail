@@ -8,7 +8,7 @@ Only current `main` is maintained at this stage. There is no promised response t
 
 ## Report privately
 
-If repository private vulnerability reporting is enabled, use [Report a vulnerability](https://github.com/ufodia/handrail/security/advisories/new). Do not publish exploit details, private page context or browser-profile data in a public issue.
+Use [Report a vulnerability](https://github.com/ufodia/handrail/security/advisories/new). Private vulnerability reporting is enabled for this repository. Do not publish exploit details, private page context or browser-profile data in a public issue.
 
 If that channel is unavailable, ask the maintainer for a private route without posting sensitive information. Include the affected commit, browser/OS, reproduction steps, impact and a minimal synthetic guide/page through the private channel.
 
