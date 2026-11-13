@@ -1,0 +1,39 @@
+{
+  "name": "handrail",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A little guidance, right where it matters.",
+  "type": "module",
+  "license": "MIT",
+  "author": "ufodia",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && npm run build:extension && vite build",
+    "build:extension": "node scripts/build-extension.mjs",
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build:extension && playwright test",
+    "verify": "npm run typecheck && npm test && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/chrome": "0.3.7",
+    "esbuild": "0.28.2",
+    "fflate": "0.8.3",
+    "prettier": "3.10.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

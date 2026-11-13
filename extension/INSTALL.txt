@@ -1,0 +1,15 @@
+Handrail 0.1.0 — MIT Copyright (c) 2026 ufodia
+
+1. Extract this ZIP into a folder you will keep.
+2. In Chrome, open chrome://extensions (Edge: edge://extensions).
+3. Enable Developer mode, choose Load unpacked and select this folder.
+4. Visit an ordinary HTTP(S) page and click the Handrail toolbar action.
+
+Only the page you explicitly invoke the extension on receives temporary access.
+Handrail never clicks controls or fills forms. Guides remain in extension-local
+storage until you export them. Review guide labels and selectors before sharing.
+Restricted browser pages, cross-origin frames and closed shadow roots are outside
+its scope. This package is for manual installation; it is not a Web Store listing.
+
+Source and documentation: https://github.com/ufodia/handrail
+Optional support: https://buymeacoffee.com/ufodia

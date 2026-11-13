@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="A local, no-account practice page for recording and replaying your own Handrail guide."
+    />
+    <title>Handrail practice desk</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/practice.css" />
+    <script src="/practice.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/">← Handrail</a>
+      <p class="eyebrow">A PRACTICE DESK / NO ACCOUNT REQUIRED</p>
+      <h1>A few clicks.<br />A useful little guide.</h1>
+      <p>
+        Install Handrail, open its toolbar action, and record your own route through this page.
+        Everything here is a demonstration.
+      </p>
+      <ol>
+        <li>Choose <b>Open preferences</b>.</li>
+        <li>Choose <b>Notifications</b>.</li>
+        <li>Choose <b>Save preferences</b>.</li>
+        <li>Choose <b>Continue to summary</b>.</li>
+      </ol>
+      <button id="open-preferences">Open preferences</button>
+      <section id="preferences" hidden aria-labelledby="preferences-title">
+        <h2 id="preferences-title">Practice preferences</h2>
+        <div class="tabs">
+          <button id="profile-tab" aria-pressed="true">Profile</button
+          ><button id="notifications-tab" aria-pressed="false">Notifications</button>
+        </div>
+        <div id="profile-panel">
+          <label
+            >Practice display name<input id="display-name" placeholder="Type a made-up name"
+          /></label>
+          <p>Handrail ignores text input controls and never records their values.</p>
+        </div>
+        <div id="notifications-panel" hidden>
+          <h3>Notifications</h3>
+          <p>This practice panel has no server and sends no notifications.</p>
+          <label><input id="weekly-digest" type="checkbox" /> Show a pretend weekly digest</label>
+        </div>
+        <button id="save-preferences">Save preferences</button>
+        <p id="practice-status" role="status"></p>
+        <a id="continue-summary" href="/practice-next.html" hidden>Continue to summary →</a>
+      </section>
+      <aside>
+        <b>Make it your own.</b>
+        <p>
+          Stop recording, review the captured labels, edit the instructions, save the guide and
+          replay it here. Your clicks still do the work.
+        </p>
+      </aside>
+      <footer>
+        MIT © 2026 ufodia · <a href="https://github.com/ufodia/handrail">Source</a> ·
+        <a href="https://buymeacoffee.com/ufodia">Buy ufodia a coffee</a>
+      </footer>
+    </main>
+  </body>
+</html>

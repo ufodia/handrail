@@ -1,0 +1,20 @@
+name: Feature request
+description: Explain a user problem and a focused improvement.
+title: '[Idea]: '
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior and useful outcome
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Current workaround and trade-offs

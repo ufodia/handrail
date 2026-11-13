@@ -1,0 +1,26 @@
+name: Bug report
+description: Report a reproducible recording, guide editing or replay problem.
+title: '[Bug]: '
+body:
+  - type: markdown
+    attributes:
+      value: 'Use minimal synthetic examples. Remove private content and credentials. Follow SECURITY.md for vulnerabilities.'
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and minimal example
+      description: Include the affected workflow and the smallest example that reproduces it.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, operating system and source commit
+    validations:
+      required: true
