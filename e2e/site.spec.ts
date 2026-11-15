@@ -88,3 +88,22 @@ test('practice controls wait for their script before accepting a click', async (
     release();
   }
 });
+
+test('source commands remain keyboard scrollable at 400 percent reflow width', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto('/');
+  const commands = page.getByRole('region', { name: 'Local build commands', exact: true });
+  for (
+    let i = 0;
+    i < 20 && !(await commands.evaluate((element) => element === document.activeElement));
+    i++
+  ) {
+    await page.keyboard.press('Tab');
+  }
+  await expect(commands).toBeFocused();
+  await page.keyboard.press('ArrowRight');
+  await expect.poll(() => commands.evaluate((element) => element.scrollLeft)).toBeGreaterThan(0);
+  await page.keyboard.press('Tab');
+  await expect(commands).not.toBeFocused();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

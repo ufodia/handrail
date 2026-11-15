@@ -1460,3 +1460,13 @@ h3 {
     transition: none !important;
   }
 }
+
+/* Step numbers convey the installation order, even when the label is short. */
+.install-steps li > span,
+.coachmark-count {
+  color: #4d6575;
+}
+pre:focus-visible {
+  outline: 3px solid #8b6040;
+  outline-offset: 4px;
+}

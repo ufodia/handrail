@@ -496,3 +496,10 @@ footer a {
     padding: 8px 10px;
   }
 }
+
+@media (forced-colors: active) {
+  .guide-choice[aria-pressed='true'] {
+    outline: 2px solid Highlight;
+    outline-offset: -3px;
+  }
+}

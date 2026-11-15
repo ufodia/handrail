@@ -31,6 +31,7 @@ function install(): void {
   let pendingRecords = 0;
   let recordQueue: Promise<void> = Promise.resolve();
   let notice = '';
+  let focusedAction: string | null = null;
 
   const normalizedName = (value: string): string => value.replace(/\s+/g, ' ').trim();
 
@@ -315,6 +316,13 @@ function install(): void {
 
   function render(): void {
     if (!session) return;
+    const focused = shadow?.activeElement;
+    if (
+      !document.hasFocus() ||
+      (document.activeElement !== document.body && document.activeElement !== host)
+    )
+      focusedAction = null;
+    else if (focused instanceof HTMLButtonElement) focusedAction = focused.textContent;
     ensureOverlay();
     const get = <T extends HTMLElement>(selector: string): T => shadow!.querySelector<T>(selector)!;
     get('.brand').textContent =
@@ -370,6 +378,25 @@ function install(): void {
       actions.append(
         button('Stop guide', () => void command({ type: 'STOP_SESSION', save: false })),
       );
+    if (
+      focusedAction &&
+      document.hasFocus() &&
+      (document.activeElement === document.body || document.activeElement === host) &&
+      !busy &&
+      pendingRecords === 0
+    ) {
+      const label =
+        focusedAction === 'Pause' ? 'Resume' : focusedAction === 'Resume' ? 'Pause' : focusedAction;
+      const choices = Array.from(
+        actions.querySelectorAll<HTMLButtonElement>('button:not(:disabled)'),
+      );
+      (
+        choices.find((item) => item.textContent === focusedAction) ??
+        choices.find((item) => item.textContent === label) ??
+        choices[0]
+      )?.focus({ preventScroll: true });
+      focusedAction = null;
+    }
     const highlight = get<HTMLDivElement>('.highlight');
     if (target && session.status === 'active' && session.mode === 'replay') {
       const rect = target.getBoundingClientRect();

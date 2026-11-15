@@ -23,6 +23,7 @@ let newName = '';
 let newDescription = '';
 let lastState = '';
 let stopped = false;
+let pendingFocus: string | null = null;
 
 type Child = Node | string | null | false;
 function el<K extends keyof HTMLElementTagNameMap>(
@@ -648,6 +649,7 @@ function library(): HTMLElement {
         { disabled: editing, testid: 'select-guide' },
       );
       select.className = `guide-choice${selectedId === guide.id ? ' selected' : ''}`;
+      select.dataset.guideId = guide.id;
       select.setAttribute('aria-pressed', String(selectedId === guide.id));
       select.append(el('span', 'guide-count', `${guide.steps.length} steps`));
       list.append(el('li', '', select));
@@ -659,6 +661,13 @@ function library(): HTMLElement {
   return section;
 }
 function render(): void {
+  const active = document.activeElement as HTMLElement | null;
+  if (!document.hasFocus()) pendingFocus = null;
+  if (document.hasFocus() && active && root!.contains(active) && active.dataset.testid) {
+    pendingFocus =
+      `[data-testid="${CSS.escape(active.dataset.testid)}"]` +
+      (active.dataset.guideId ? `[data-guide-id="${CSS.escape(active.dataset.guideId)}"]` : '');
+  }
   const container = el('div', 'popup-shell', header());
   const status = el(
     'p',
@@ -710,6 +719,28 @@ function render(): void {
     ),
   );
   root!.replaceChildren(container);
+  if (pendingFocus && document.hasFocus() && !busy) {
+    let target = root!.querySelector<HTMLElement>(pendingFocus);
+    if (!target || target.matches(':disabled')) {
+      const alternatives: Record<string, string> = {
+        'pause-session': 'resume-session',
+        'resume-session': 'pause-session',
+        'start-recording': 'pause-session',
+        'follow-guide': 'pause-session',
+        'save-guide-changes': 'edit-guide',
+        'delete-guide': 'confirm-delete-guide',
+      };
+      const previous = pendingFocus.match(/data-testid="([^"]+)"/)?.[1];
+      const next = previous ? alternatives[previous] : undefined;
+      target = editing
+        ? root!.querySelector<HTMLElement>('input:not(:disabled),textarea:not(:disabled)')
+        : next
+          ? root!.querySelector<HTMLElement>(`[data-testid="${next}"]`)
+          : null;
+    }
+    target?.focus({ preventScroll: true });
+    pendingFocus = null;
+  }
 }
 async function refresh(): Promise<void> {
   if (busy || editing || stopped) return;

@@ -99,8 +99,7 @@ test('real action popup records, edits, exports and replays trusted clicks acros
   });
   await page.getByRole('button', { name: 'Open preferences', exact: true }).click();
   await expect.poll(async () => (await extension.state()).session?.stepIndex).toBe(1);
-  await mkdir(path.resolve('docs/assets'), { recursive: true });
-  await page.screenshot({ path: path.resolve('docs/assets/workspace.png'), fullPage: true });
+  await page.screenshot({ path: testInfo.outputPath('workspace.png'), fullPage: true });
   await page.getByRole('button', { name: 'Notifications', exact: true }).click();
   await expect.poll(async () => (await extension.state()).session?.stepIndex).toBe(2);
   await page.getByRole('button', { name: 'Save preferences', exact: true }).click();
@@ -273,4 +272,41 @@ test('recording ignores private or editable external labels and never stores for
     'Continue visibly',
   ]);
   expect(JSON.stringify(session.guide)).not.toContain('_SECRET');
+});
+
+test('keyboard focus survives guide selection and overlay pause/resume updates', async ({
+  extension,
+}) => {
+  await extension.page.goto(practice);
+  await extension.seed([guideFixture()]);
+  const popup = await extension.openPopup();
+  await popup.evaluate(() =>
+    document.querySelector<HTMLElement>('[data-testid="select-guide"]')!.focus(),
+  );
+  await popup.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    text: '\r',
+    unmodifiedText: '\r',
+  });
+  await popup.send('Input.dispatchKeyEvent', {
+    type: 'keyUp',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+  });
+  await expect.poll(() => popup.has('follow-guide')).toBe(true);
+  await expect
+    .poll(() => popup.evaluate(() => (document.activeElement as HTMLElement).dataset.testid))
+    .toBe('select-guide');
+  await popup.click('follow-guide');
+  await popup.close();
+  const guide = extension.page.locator('#handrail-overlay');
+  await guide.getByRole('button', { name: 'Pause', exact: true }).focus();
+  await extension.page.keyboard.press('Enter');
+  await expect(guide.getByRole('button', { name: 'Resume', exact: true })).toBeFocused();
+  await extension.page.keyboard.press('Enter');
+  await expect(guide.getByRole('button', { name: 'Pause', exact: true })).toBeFocused();
 });
