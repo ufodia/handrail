@@ -117,6 +117,6 @@ npm run test:e2e
 
 If Handrail makes a familiar task easier for someone, a coffee supports browser compatibility work, regression checks and clear instructions. Support is voluntary, and everyone receives the same open-source tool.
 
-[Buy ufodia a coffee](https://buymeacoffee.com/ufodia) · [Contribute](CONTRIBUTING.md)
+[Buy ufodia a coffee](https://buymeacoffee.com/ufodia) · [Contribute](CONTRIBUTING.md) · [GitHub Sponsors](https://github.com/sponsors/ufodia)
 
 **MIT © 2026 ufodia.** See [LICENSE](LICENSE).
