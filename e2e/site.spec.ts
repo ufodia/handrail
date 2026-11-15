@@ -40,9 +40,9 @@ test('installation site offers a real limited-permission extension ZIP and reada
   expect(manifest.externally_connectable).toBeUndefined();
   expect(manifest.content_scripts).toBeUndefined();
   expect(strFromU8(files['INSTALL.txt']!)).toContain('manual installation');
-  await expect(
-    page.getByRole('link', { name: 'Open practice page', exact: false }).first(),
-  ).toHaveAttribute('href', '/practice.html');
+  const practiceLink = page.getByRole('link', { name: 'Open practice page', exact: false }).first();
+  const practiceUrl = new URL('practice.html', page.url()).href;
+  await expect(practiceLink).toHaveJSProperty('href', practiceUrl);
   await expect(page.getByRole('link', { name: /coffee/i }).first()).toHaveAttribute(
     'href',
     'https://buymeacoffee.com/ufodia',
@@ -53,10 +53,12 @@ test('installation site offers a real limited-permission extension ZIP and reada
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
     true,
   );
-  await page.goto('/practice.html');
-  await page.getByRole('button', { name: 'Open preferences', exact: true }).click();
-  await page.getByRole('button', { name: 'Notifications', exact: true }).click();
-  await page.getByRole('button', { name: 'Save preferences', exact: true }).click();
-  await expect(page.getByRole('status')).toContainText('Nothing was sent');
+  const [practicePage] = await Promise.all([page.waitForEvent('popup'), practiceLink.click()]);
+  practicePage.on('pageerror', (error) => errors.push(error.message));
+  await expect(practicePage).toHaveURL(practiceUrl);
+  await practicePage.getByRole('button', { name: 'Open preferences', exact: true }).click();
+  await practicePage.getByRole('button', { name: 'Notifications', exact: true }).click();
+  await practicePage.getByRole('button', { name: 'Save preferences', exact: true }).click();
+  await expect(practicePage.getByRole('status')).toContainText('Nothing was sent');
   expect(errors).toEqual([]);
 });
