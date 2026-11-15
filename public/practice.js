@@ -18,3 +18,4 @@ $('save-preferences')?.addEventListener('click', () => {
 $('finish-practice')?.addEventListener('click', () => {
   $('practice-status').textContent = 'Practice complete. You made every click yourself.';
 });
+$('open-preferences')?.removeAttribute('disabled');

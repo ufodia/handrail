@@ -60,3 +60,31 @@ test('installation site offers a real limited-permission extension ZIP and reada
   await expect(practicePage.getByRole('status')).toContainText('Nothing was sent');
   expect(errors).toEqual([]);
 });
+
+test('practice controls wait for their script before accepting a click', async ({ page }) => {
+  let release!: () => void;
+  const scriptAllowed = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  let requested!: () => void;
+  const scriptRequested = new Promise<void>((resolve) => {
+    requested = resolve;
+  });
+  await page.context().route('**/practice.js', async (route) => {
+    requested();
+    await scriptAllowed;
+    await route.continue();
+  });
+  try {
+    await page.goto('/practice.html', { waitUntil: 'commit' });
+    await scriptRequested;
+    const open = page.getByRole('button', { name: 'Open preferences', exact: true });
+    await expect(open).toBeDisabled();
+    release();
+    await expect(open).toBeEnabled();
+    await open.click();
+    await expect(page.getByRole('button', { name: 'Notifications', exact: true })).toBeVisible();
+  } finally {
+    release();
+  }
+});
