@@ -1,11 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { readFile, mkdir } from 'node:fs/promises';
-import path from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { unzipSync, strFromU8 } from 'fflate';
 
 test('installation site offers a real limited-permission extension ZIP and readable mobile practice links', async ({
   page,
-}) => {
+}, info) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -47,8 +46,7 @@ test('installation site offers a real limited-permission extension ZIP and reada
     'href',
     'https://buymeacoffee.com/ufodia',
   );
-  await mkdir(path.resolve('docs/assets'), { recursive: true });
-  await page.screenshot({ path: path.resolve('docs/assets/site.png'), fullPage: true });
+  await page.screenshot({ path: info.outputPath('site.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(
     true,

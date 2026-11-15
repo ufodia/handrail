@@ -112,7 +112,7 @@ button {
 }
 .site-header > nav a {
   font-size: 13px;
-  color: #7b96ac;
+  color: #5d7283;
   text-decoration: none;
   padding-block: 9px;
 }
@@ -126,7 +126,7 @@ button {
   border: 1px solid #e8c9b2;
   border-radius: 6px;
   background: #fbebdf;
-  color: #a78264;
+  color: #81644d;
   text-decoration: none;
   font-size: 12px;
   padding: 11px 13px;
@@ -169,7 +169,7 @@ button {
 }
 .hero h1 > span {
   font-weight: 350;
-  color: #91adc0;
+  color: #60727f;
 }
 .hero-description {
   color: #7b97ad;
@@ -206,9 +206,9 @@ button {
   font-weight: 400;
 }
 .button.blue {
-  background: #6089a8;
+  background: #416c8d;
   color: #f9fcff;
-  border-color: #6089a8;
+  border-color: #416c8d;
 }
 .button.blue:hover {
   background: #466f91;
@@ -216,7 +216,7 @@ button {
 }
 .button.peach {
   background: #f6dfce;
-  color: #9c795a;
+  color: #7a5e46;
   border-color: #e9c6ac;
 }
 .button.peach:hover {
@@ -243,7 +243,7 @@ button {
   gap: 15px;
   font: 9px var(--mono);
   letter-spacing: 0.7px;
-  color: #a3b7c6;
+  color: #606c75;
   padding: 0 2px;
 }
 .illustration-browser {
@@ -279,7 +279,7 @@ button {
 .browser-top > span:last-child {
   font: 8px var(--mono);
   letter-spacing: 0.1px;
-  color: #b2c0ca;
+  color: #676f75;
 }
 .example-page {
   padding: 26px 23px 16px;
@@ -288,7 +288,7 @@ button {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #8fa4ac;
+  color: #67767c;
   font-size: 12px;
   letter-spacing: -0.2px;
 }
@@ -300,7 +300,7 @@ button {
   display: block;
   font: 8px var(--mono);
   letter-spacing: 0.9px;
-  color: #bcc5c3;
+  color: #6f7473;
   margin-top: 24px;
 }
 .example-page h2 {
@@ -343,14 +343,14 @@ button {
   border-radius: 4px;
   padding: 10px 7px;
   text-align: center;
-  color: #adb8b6;
+  color: #6d7473;
   white-space: nowrap;
 }
 .example-links > .highlighted-target {
   background: #edf4f8;
   border-color: #6c97b7;
   box-shadow: 0 0 0 4px #a9c4d92b;
-  color: #678ca5;
+  color: #527084;
   font-weight: 550;
 }
 .highlighted-target > b {
@@ -399,14 +399,14 @@ button {
 .example-coachmark strong {
   font-size: 11px;
   font-weight: 550;
-  color: #aa8161;
+  color: #81624a;
   display: block;
   margin-top: 2px;
 }
 .example-coachmark p {
   font-size: 10px;
   line-height: 1.7;
-  color: #b99b7f;
+  color: #786553;
   margin: 6px 0 0;
 }
 .coachmark-arrow {
@@ -418,11 +418,11 @@ button {
 .illustration-caption {
   font-size: 12px;
   line-height: 1.8;
-  color: #9bb0bf;
+  color: #5f6b75;
   margin: 16px 3px 0;
 }
 .illustration-caption > span {
-  color: #7f9eb5;
+  color: #586d7d;
   font-weight: 550;
 }
 .section-space {
@@ -465,7 +465,7 @@ h2 {
   display: grid;
   place-items: center;
   font: 11px var(--mono);
-  color: #94adc0;
+  color: #5d6d79;
   border: 1px solid #d1e0ea;
   background: #edf3f8;
   width: 31px;
@@ -510,7 +510,7 @@ h3 {
 }
 .install-copy h2 > span {
   font-weight: 350;
-  color: #8ba9c0;
+  color: #5a6e7d;
 }
 .install-copy > p:not(.eyebrow) {
   font-size: 14px;
@@ -528,7 +528,7 @@ h3 {
   display: block;
   font-size: 12px;
   line-height: 1.8;
-  color: #9ab0c3;
+  color: #5e6b77;
   text-decoration: none;
   margin-top: 17px;
 }
@@ -563,7 +563,7 @@ h3 {
 }
 .install-steps h3 {
   font-size: 16px;
-  color: #7092ab;
+  color: #556f82;
   font-weight: 500;
 }
 .install-steps p {
@@ -574,7 +574,7 @@ h3 {
 }
 .install-steps code {
   font: 11px var(--mono);
-  color: #81a1ba;
+  color: #566c7d;
   background: #e7eff5;
   padding: 2px 4px;
   border-radius: 3px;
@@ -582,13 +582,13 @@ h3 {
 }
 .install-steps strong {
   font-weight: 500;
-  color: #839fb5;
+  color: #5c6f7f;
 }
 .install-steps a {
   display: inline-block;
   font-size: 12px;
   text-decoration: none;
-  color: #799bb5;
+  color: #566e81;
   margin-top: 10px;
 }
 .install-steps a:hover {
@@ -632,12 +632,12 @@ h3 {
 .build-commands > div > span {
   font: 9px var(--mono);
   letter-spacing: 0.6px;
-  color: #9ab0c3;
+  color: #5e6b77;
 }
 .build-commands button {
   border: 1px solid #c9dce9;
   background: #f4f8fb;
-  color: #98adc0;
+  color: #63707d;
   padding: 5px 8px;
   font-size: 10px;
   border-radius: 4px;
@@ -650,7 +650,7 @@ h3 {
   font: 11px/2.1 var(--mono);
   padding: 18px 17px;
   margin: 0;
-  color: #7d9db5;
+  color: #596f81;
   overflow-x: auto;
 }
 .build-commands code {
@@ -666,7 +666,7 @@ h3 {
 }
 .build-commands > p > code {
   font: 10px var(--mono);
-  color: #88a6bd;
+  color: #5b6f7f;
 }
 .build-commands > span:not(:empty) {
   display: block;
@@ -738,12 +738,12 @@ h3 {
   padding: 31px;
 }
 .support-card .eyebrow {
-  color: #c1a68c;
+  color: #7a6958;
 }
 .support-card h2 {
   font-size: 29px;
   letter-spacing: -0.85px;
-  color: #a7866a;
+  color: #816752;
 }
 .support-card p:not(.eyebrow) {
   font-size: 13px;
@@ -796,7 +796,7 @@ h3 {
 .build-note > div:first-child > p:last-child,
 .boundary-grid p,
 .practice-card p:not(.eyebrow) {
-  color: #7892a7;
+  color: #596c7c;
 }
 .hero-note,
 .step-detail,
@@ -806,10 +806,10 @@ h3 {
 .build-commands > p,
 .site-footer,
 .site-footer a {
-  color: #8aa2b5;
+  color: #5e6e7b;
 }
 .support-card p:not(.eyebrow) {
-  color: #a78c73;
+  color: #7c6855;
 }
 .install-steps p,
 .install-steps a,
@@ -819,10 +819,10 @@ h3 {
   font-size: 12px;
 }
 .boundary-grid h3 {
-  color: #66859e;
+  color: #587288;
 }
 .eyebrow {
-  color: #8ea7ba;
+  color: #5c6d79;
 }
 .install-steps code {
   font-size: 11px;
