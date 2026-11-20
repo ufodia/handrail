@@ -24,7 +24,7 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "@playwright/test": "1.65.0",
+    "@playwright/test": "1.65.1",
     "@types/chrome": "0.3.7",
     "esbuild": "0.28.2",
     "fflate": "0.8.3",
